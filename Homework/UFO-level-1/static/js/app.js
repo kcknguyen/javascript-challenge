@@ -10,7 +10,7 @@ console.log(ufoSightings);
 });
 
 data.forEach(function(ufoSightingst) {
-console.log(ufoSightings);
+//console.log(ufoSightings);
 var row = tbody.append("tr");
 });
 
