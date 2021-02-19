@@ -39,17 +39,58 @@ cell.text(value);
   });
  });
 
-// // BONUS: Refactor to use Arrow Functions!
-// data.forEach((weatherReport) => {
-//   var row = tbody.append("tr");
-//   Object.entries(weatherReport).forEach(([key, value]) => {
-//     var cell = row.append("td");
-//     cell.text(value);
-//   });
-// });
+ f// Select the button
+var button = d3.select("#button");
 
-//creating references: date field and buttons
-//ar button = d3.select("#filter-btn");
-//var dateField = d3.select("#datetime");
-//var inputFieldCity = d3.select("#city");
-//var columns = ["datetime", "city", "state", "country", "shape", "comments"]
+// Select the form
+var form = d3.select("#form");
+
+// Create event handlers for clicking the button or pressing the enter key
+button.on("click", runEnter);
+form.on("submit",runEnter);
+
+// Create the function to run for both events
+function runEnter() {
+
+  // Prevent the page from refreshing
+  d3.event.preventDefault();
+
+  // Select the input element and get the raw HTML node
+  var inputElement = d3.select("#data");
+
+  // Get the value property of the input element
+  var inputValue = inputElement.property("datetime");
+
+  // Print the value to the console
+  console.log(inputValue);
+}
+// use the `on` function in d3 to attach a click event to the handler function for filterButton
+filterButton.on("click", filterTable);
+
+// use the `on` function in d3 to attach a click event to the handler function for resetButton
+resetButton.on("click", resetTable);
+//var inputdate = data;
+//var button = d3.select("#button");
+//button.on("click", runEnter);
+//form.on("submit",runEnter);
+// Complete the event handler function for the form
+//function runEnter() {
+
+    // Prevent the page from refreshing
+    //d3.event.preventDefault();
+    
+    // Select the input element and get the raw HTML node
+   // var inputElement = d3.select("#Filter Table");
+  
+    // Get the value property of the input element
+    //var inputValue = inputElement.property("datetime");
+  
+    //console.log(inputValue);
+    //console.log(inputdate);
+  
+    //var filteredData = inputdate.filter(inputdate => inputdate.datetime === inputValue);
+  
+    //console.log(filteredData);
+  
+//};
+
