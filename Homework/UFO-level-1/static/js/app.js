@@ -39,42 +39,38 @@ cell.text(value);
   });
  });
 
- f// Select the button
-var button = d3.select("#button");
+ // Select the button
+var button = d3.select("#filter-btn");
+button.on("click", function() {
 
-// Select the form
-var form = d3.select("#form");
+    tbody.html("");
 
-// Create event handlers for clicking the button or pressing the enter key
-button.on("click", runEnter);
-form.on("submit",runEnter);
+    // Select the input date 
+    var inputElement = d3.select("#datetime");
+    // Get the value property of the input date
+    var inputValue = inputElement.property("value");
+    console.log(inputValue);
+    // Filter Data with datetime equal to input value
+    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+    console.log(filteredData);
 
-// Create the function to run for both events
-function runEnter() {
 
-  // Prevent the page from refreshing
-  d3.event.preventDefault();
+    filteredData.forEach(function(selections) {
+    console.log(selections);
+    // Append one table row `tr` for each UFO Sighting object
+    var row = tbody.append("tr");
+    // Use `Object.entries` to console.log each UFO Sighting value
+    Object.entries(selections).forEach(function([key, value]) {
+        console.log(key, value);
+        // Append a cell to the row for each value
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
+});
 
-  // Select the input element and get the raw HTML node
-  var inputElement = d3.select("#data");
+ 
 
-  // Get the value property of the input element
-  var inputValue = inputElement.property("datetime");
-
-  // Print the value to the console
-  console.log(inputValue);
-}
-// use the `on` function in d3 to attach a click event to the handler function for filterButton
-filterButton.on("click", filterTable);
-
-// use the `on` function in d3 to attach a click event to the handler function for resetButton
-resetButton.on("click", resetTable);
-//var inputdate = data;
-//var button = d3.select("#button");
-//button.on("click", runEnter);
-//form.on("submit",runEnter);
-// Complete the event handler function for the form
-//function runEnter() {
 
     // Prevent the page from refreshing
     //d3.event.preventDefault();
